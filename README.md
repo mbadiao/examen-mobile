@@ -1,16 +1,36 @@
-# weather
+# Météo Progress
 
-A new Flutter project.
+Application Flutter de météo en temps réel — Examen Développement Mobile L3GL ISI 2026.
 
-## Getting Started
+## Membres du groupe
 
-This project is a starting point for a Flutter application.
+- [Nom Prénom 1]
+- [Nom Prénom 2]
+- [Nom Prénom 3]
 
-A few resources to get you started if this is your first Flutter project:
+## Description
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Application qui récupère les données météo en temps réel pour 5 villes (Paris, Dakar, Abidjan, Londres, Libreville), affiche une jauge de progression animée et permet de visualiser les villes sur Google Maps.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Fonctionnalités
+
+- Écran d'accueil avec message d'intro
+- Jauge de progression animée
+- Appels API OpenWeatherMap pour 5 villes
+- Tableau interactif des données météo
+- Page détail ville avec Google Maps
+- Mode sombre et clair
+
+## Technologies
+
+- Flutter / Dart
+- Provider (state management)
+- OpenWeatherMap API
+- url_launcher (Google Maps)
+
+## Lancement
+
+```bash
+flutter pub get
+flutter run
+```
