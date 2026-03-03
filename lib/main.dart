@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/theme_provider.dart';
+import 'providers/meteo_provider.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/main_screen/main_screen.dart';
 
@@ -33,7 +34,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        // P2 : ajouter ChangeNotifierProvider(create: (_) => WeatherProvider()) ici
+        ChangeNotifierProvider(create: (_) => MeteoProvider()),
       ],
       child: const MyApp(),
     ),

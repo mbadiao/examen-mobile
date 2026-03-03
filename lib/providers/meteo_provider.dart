@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import '../models/meteo_model.dart';
-import '../models/ville_model.dart';
+import '../models/city_model.dart';
 import '../services/meteo_service.dart';
 
 enum EtatChargement { initial, chargement, succes, erreur }
@@ -23,7 +23,7 @@ class MeteoProvider extends ChangeNotifier {
     'Plus que quelques secondes avant d\'avoir le résultat...',
   ];
 
-  // Lancer le chargement des 5 villes
+  // Lancer le chargement des 5 defaultCities
   Future<void> chargerMeteo() async {
     etat = EtatChargement.chargement;
     donneesMeteo = [];
@@ -32,14 +32,14 @@ class MeteoProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      for (int i = 0; i < villes.length; i++) {
+      for (int i = 0; i < defaultCities.length; i++) {
         // Mettre à jour le message rotatif
         indexMessage = i % messagesAttente.length;
         notifyListeners();
 
         // Appel API
         final reponse = await _service.getMeteoVille(
-          villes[i].nom,
+          defaultCities[i].name,
           cleApi,
           'metric',
           'fr',
@@ -48,12 +48,12 @@ class MeteoProvider extends ChangeNotifier {
         // Convertir et ajouter
         final meteo = convertirReponse(
           reponse.data as Map<String, dynamic>,
-          villes[i].nom,
+          defaultCities[i].name,
         );
         donneesMeteo.add(meteo);
 
         // Mettre à jour la progression
-        progression = (i + 1) / villes.length;
+        progression = (i + 1) / defaultCities.length;
         notifyListeners();
 
         // Attendre 2 secondes avant la prochaine ville
