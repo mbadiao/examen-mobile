@@ -4,7 +4,7 @@ import '../models/meteo_model.dart';
 
 part 'meteo_service.g.dart';
 
-const String _cleApi = 'cbef47a566e2a9b5115b8db5dfc9c721';
+
 const String _baseUrl = 'https://api.openweathermap.org/data/2.5/';
 
 @RestApi(baseUrl: _baseUrl)
