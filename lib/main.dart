@@ -4,6 +4,7 @@ import 'providers/theme_provider.dart';
 import 'providers/meteo_provider.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/main_screen/main_screen.dart';
+import 'screens/main_screen/CityDetailScreen.dart';
 
 // Thème sombre
 final ThemeData darkTheme = ThemeData(
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
           home: const HomeScreen(),
           routes: {
             '/home': (context) => const HomeScreen(),
-            '/main': (context) => const MainScreen(),
+            '/main': (context) => const main_screen(),
             // P3 : ajouter '/city_detail' ici
           },
         );
