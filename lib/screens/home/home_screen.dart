@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -6,36 +8,54 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Label haut
-                _buildTopLabel(colorScheme),
-                const SizedBox(height: 40),
-
-                // Carte icône météo
-                _buildWeatherIconCard(colorScheme),
-                const SizedBox(height: 32),
-
-                // Titre
-                _buildTitle(colorScheme),
-                const SizedBox(height: 16),
-
-                // Sous-titre
-                _buildSubtitle(colorScheme),
-                const SizedBox(height: 40),
-
-                // Bouton démarrer
-                _buildStartButton(context, colorScheme),
-              ],
+        child: Stack(
+          children: [
+            // Toggle theme en haut a droite
+            Positioned(
+              top: 16,
+              right: 16,
+              child: GestureDetector(
+                onTap: () => context.read<ThemeProvider>().toggleTheme(),
+                child: Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: colorScheme.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: colorScheme.primary.withAlpha(60)),
+                  ),
+                  child: Icon(
+                    isDark ? Icons.light_mode : Icons.dark_mode,
+                    color: colorScheme.primary,
+                    size: 22,
+                  ),
+                ),
+              ),
             ),
-          ),
+            Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildTopLabel(colorScheme),
+                    const SizedBox(height: 40),
+                    _buildWeatherIconCard(colorScheme),
+                    const SizedBox(height: 32),
+                    _buildTitle(colorScheme),
+                    const SizedBox(height: 16),
+                    _buildSubtitle(colorScheme),
+                    const SizedBox(height: 40),
+                    _buildStartButton(context, colorScheme),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
