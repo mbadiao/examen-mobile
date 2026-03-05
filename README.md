@@ -4,9 +4,9 @@ Application Flutter de météo en temps réel — Examen Développement Mobile L
 
 ## Membres du groupe
 
-- [Nom Prénom 1]
-- [Nom Prénom 2]
-- [Nom Prénom 3]
+- Mbaye diao
+- Yande Guisse
+- Khady Gackou
 
 ## Description
 
